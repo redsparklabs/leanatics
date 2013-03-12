@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="span12">
+    <h2>Leanatics</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+    <p>
+      This project is my own little itch-scratching.  I like to keep current with the blog posts from the lean startup thought leaders I look up to.  I know Google Reader and other feed readers work great for this, but I wanted to be able to easily schedule a call via Clarity.fm.
+    </p>
+    <p>
+      If you have stumbled across this site, you might be wondering what Lean Startup is all about.  You can read more <%= link_to 'here','http://theleanstartup.com/principles' %>.  This folks on this list know there stuff and can help you build your own startup.  Don't hesitate to contact them via twitter or schedule a phone call with <%= link_to 'Clarity','http://www.clarity.fm' %>.
+    </p>
+    <p>
+      If you find this site useful, by all means bookmark it, tell your friends about it and use the heck out of it.  If you think it is stupid, silly, or a waste, kindly move along.
+    </p>
+    <p>
+      If you are one of the featured authors I have listed, thanks for everything you do to build the worldwide startup community.  Blogging, speaking and otherwise sharing the lessons you have learned, benefits those of us following in your footsteps more than you can imagine.  If you do not wish to have your information and blog posts shared here, please shoot me a message on twitter (@spinuplabs) and I will be happy to comply.
+    </p>
+    <p>
+      If you have ideas for improving it, shoot me a message on <%= link_to 'twitter','http://twitter.com/#!/spinuplabs' %> - <%= link_to '@spinuplabs','http://twitter.com/#!/spinuplabs' %>.
+    </p>
+    <hr />
+  </div>
+</div>
+<% @entries.each do |entry| %>
+  <div class="row" style="border-bottom: solid 1px #F7F7F7;">
+    <div class="span1">
+      <% if entry.source.twitter? %>
+        <%= image_tag 'https://api.twitter.com/1/users/profile_image?screen_name='+entry.source.twitter+'&size=normal',:align => 'left', :class => 'img-circle' %>
+      <% end %>
+    </div>
+    <div class="span11">
+      <b><%=h link_to entry.name, entry.url, :target => '_blank' %></b> <small><%= time_ago_in_words entry.published_at %> ago</small><br />
+      <small><% if entry.source.slug? %><%= link_to 'About '+entry.source.author, '/profile/'+entry.source.slug %><% else %><%= entry.source.author %><% end %></small>
+      <%#= debug entry.source %>
+      <%#= entry.summary %>
+      <%#= link_to 'Read',entry.url %>
+    </div>
+  </div>
+<% end %>
+<div class="row">
+  <div class="span12">
+    <hr />
+    <p>
+      <small><em>legal mumbo jumbo:<br /><%= link_to 'Lean Startup','http://theleanstartup.com/' %> is a registered trademark of <%= link_to 'Eric Ries','http://www.startuplessonslearned.com/' %>.<br />
+        We maintain no affiliation with <%= link_to 'Clarity.fm','http://clarity.fm' %> or <%= link_to 'Twitter','http://twitter.com' %>, but encourage the use of good tools when we see them.</em></small>
+      </p>
+    </div>
+  </div>

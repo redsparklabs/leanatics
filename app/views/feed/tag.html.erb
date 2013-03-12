@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="span12">
+    <h1><%= params[:tag].upcase %></h1>
+<hr />
+</div>
+</div>
+<% @entries.each do |entry| %>
+  <div class="row" style="border-bottom: solid 1px #F7F7F7;">
+    <div class="span1">
+      <% if entry.source.twitter? %>
+        <%= image_tag 'https://api.twitter.com/1/users/profile_image?screen_name='+entry.source.twitter+'&size=normal',:align => 'left', :class => 'img-circle' %>
+      <% end %>
+    </div>
+    <div class="span11">
+      <b><%=h link_to entry.name, entry.url, :target => '_blank' %></b> <small><%= time_ago_in_words entry.published_at %> ago</small><br />
+      <small><% if entry.source.slug? %><%= link_to 'About '+entry.source.author, '/profile/'+entry.source.slug %><% else %><%= entry.source.author %><% end %></small>
+      <%#= debug entry.source %>
+      <%#= entry.summary %>
+      <%#= link_to 'Read',entry.url %>
+    </div>
+  </div>
+<% end %>
+

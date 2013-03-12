@@ -1,0 +1,11 @@
+<div id="recent_episodes">
+  <h3>Leanatics</h3>
+  <% @entries.each do |entry| %>
+    <div style="border-bottom: solid 1px #CCCCCC; padding: 3px;">
+        <b><%=h link_to entry.name.html_safe, entry.url %></b> - <%= entry.feed_title %> |
+        <small><%= entry.published_at %></small>
+        <%#= entry.summary %>
+        <%#= link_to 'Read',entry.url %>
+      </div>
+  <% end %>
+</div>

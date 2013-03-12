@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+<% if @source.twitter %>
+  <%= image_tag 'https://api.twitter.com/1/users/profile_image?screen_name='+@source.twitter+'&size=normal' %>
+<% end %>
+
+<p>
+  <b>Active:</b>
+  <%= @source.active? ? 'Active' : 'Inactive' %>
+</p>
+
+<p>
+  <b>Categories</b>
+  <%= @source.categories %>
+</p>
+
+<p>
+  <b>Slug:</b>
+  <%= @source.slug %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @source.name %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @source.url %>
+</p>
+
+<p>
+  <b>Blog:</b>
+  <%= link_to @source.blog, @source.blog, :target => '_blank' %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%= @source.author %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @source.bio%>
+</p>
+<p>
+  <b>Twitter:</b>
+  <%#= @source.twitter%>
+  <% if @source.twitter %>
+    <%= link_to @source.twitter, 'http://twitter.com/#!/'+@source.twitter %>
+  <% end %>
+</p>
+<p>
+  <b>Clarity:</b>
+  <%#= @source.clarity %>
+  <% if @source.clarity %>
+    <%= link_to @source.clarity, 'https://clarity.fm/?b=h#/'+@source.clarity %>
+  <% end %>
+</p>
+<p>
+  <b>Picture:</b>
+  <%= @source.picture %>
+</p>
+<%= link_to 'New Source', new_source_path %><br />
+
+<%= link_to 'Edit', edit_source_path(@source) %> |
+<%= link_to 'Back', sources_path %>

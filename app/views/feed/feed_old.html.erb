@@ -1,0 +1,43 @@
+<%#= @feed_urls.count %>
+<% if @feed_urls.count > 1 %>
+
+  <h3>Lean Startup Posts</h3>
+
+  <% @feed.each do |feed_urls, feed_items| %>
+
+    <h2><%= feed_items.title %></h2>
+    <%#= debug feed_items.entries %>
+    <% feed_items.entries.each do |entry| %>
+      <%#= debug entry %>
+
+      <%# entry.each do |e| %>
+        <%#= debug e %>
+      <%# end %>
+      <%# feed_item.each do |url, entry| %>
+
+        <b><%= entry.title.sanitize %></b> - <%= feed_items.title %><br />
+        <small><%= entry.published %></small><br />
+        <%#= entry.summary %>
+        <%= link_to 'Read',entry.url %><br />
+        <br />
+
+      <%# end %>
+
+    <% end %>
+
+  <% end %>
+
+<% else %>
+
+  <h2><%= @feed.title %></h2>
+
+  <% @feed.entries.each do |entry| %>
+
+      <b><%= entry.title.sanitize %></b><br />
+      <small><%= entry.published %></small><br />
+      <%= link_to 'Read',entry.url %><br />
+      <br />
+
+  <% end %>
+
+<% end %>
