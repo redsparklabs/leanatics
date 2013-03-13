@@ -3,9 +3,9 @@ class FeedController < ApplicationController
   def feed
 
     sources = Source.all
-    sources.each do |feed|
-      FeedEntry.delay.update_from_feed(feed)
-    end
+    #sources.each do |feed|
+      #FeedEntry.delay.update_from_feed(feed)
+    #end
     @active_sources = Source.where(:active => true).all(:order => 'author')
     @entries = FeedEntry.where(:feed_id => @active_sources).all(:limit => 50, :order => 'published_at desc')
   end
