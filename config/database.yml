@@ -19,7 +19,12 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: postrgesql
+  database:
+  username:
+  password:
+  host:
+  port: 5432
+  encoding: unicode
   pool: 5
   timeout: 5000
