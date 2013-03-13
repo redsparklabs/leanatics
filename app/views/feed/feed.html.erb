@@ -18,27 +18,47 @@
       If you are one of the featured authors I have listed, thanks for everything you do to build the worldwide startup community.  Blogging, speaking and otherwise sharing the lessons you have learned, benefits those of us following in your footsteps more than you can imagine.  If you do not wish to have your information and blog posts shared here, please shoot me a message on twitter (@spinuplabs) and I will be happy to comply.
     </p>
     <p>
-      If you have ideas for improving it, shoot me a message on <%= link_to 'twitter','http://twitter.com/#!/spinuplabs' %> - <%= link_to '@spinuplabs','http://twitter.com/#!/spinuplabs' %>.
+      If you have ideas for improving it, or if I left off somone important - shoot me a message on <%= link_to 'twitter','http://twitter.com/#!/spinuplabs' %> - <%= link_to '@spinuplabs','http://twitter.com/#!/spinuplabs' %>.
     </p>
     <hr />
   </div>
 </div>
-<% @entries.each do |entry| %>
-  <div class="row" style="border-bottom: solid 1px #F7F7F7;">
-    <div class="span1">
-      <% if entry.source.twitter? %>
-        <%= image_tag 'https://api.twitter.com/1/users/profile_image?screen_name='+entry.source.twitter+'&size=normal',:align => 'left', :class => 'img-circle' %>
-      <% end %>
-    </div>
-    <div class="span11">
-      <b><%=h link_to entry.name, entry.url, :target => '_blank' %></b> <small><%= time_ago_in_words entry.published_at %> ago</small><br />
-      <small><% if entry.source.slug? %><%= link_to 'About '+entry.source.author, '/profile/'+entry.source.slug %><% else %><%= entry.source.author %><% end %></small>
-      <%#= debug entry.source %>
-      <%#= entry.summary %>
-      <%#= link_to 'Read',entry.url %>
-    </div>
+<div class="row">
+  <div class="span9">
+    <% @entries.each do |entry| %>
+      <div class="row" style="border-bottom: solid 1px #F7F7F7;">
+        <div class="span1">
+          <% if entry.source.twitter? %>
+            <%= image_tag 'https://api.twitter.com/1/users/profile_image?screen_name='+entry.source.twitter+'&size=normal',:align => 'left', :class => 'img-circle' %>
+          <% end %>
+        </div>
+        <div class="span8">
+          <b><%=h link_to entry.name, entry.url, :target => '_blank' %></b> <small><%= time_ago_in_words entry.published_at %> ago</small><br />
+          <small><% if entry.source.slug? %><%= link_to 'About '+entry.source.author, '/profile/'+entry.source.slug %><% else %><%= entry.source.author %><% end %></small>
+          <%#= debug entry.source %>
+          <%#= entry.summary %>
+          <%#= link_to 'Read',entry.url %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+  <div class="span3">
+    <h4>Author List</h4>
+    <% @active_sources.each do |source| %>
+      <div class="row">
+        <div class="span1">
+          <% if source.twitter? %>
+            <%= image_tag 'https://api.twitter.com/1/users/profile_image?screen_name='+source.twitter+'&size=mini',:align => 'left', :class => 'img-circle' %>
+          <% end %>
+        </div>
+        <div class="span2">
+          <b><%= link_to source.author, '/profile/'+source.slug %></b>
+        </div>
+      </div>
+      <hr />
+    <% end %>
+  </div>
+</div>
 <div class="row">
   <div class="span12">
     <hr />

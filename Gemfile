@@ -7,6 +7,7 @@ gem 'rails', '3.2.12'
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'seed_dumper'
 end
 gem 'feedzirra'
 gem 'twitter-bootstrap-rails'
