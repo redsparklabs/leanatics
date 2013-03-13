@@ -43,21 +43,6 @@
     <% end %>
   </div>
   <div class="span3">
-    <h4>Author List</h4>
-    <% @active_sources.each do |source| %>
-      <div class="row">
-        <div class="span1">
-          <% if source.twitter? %>
-            <%= image_tag 'https://api.twitter.com/1/users/profile_image?screen_name='+source.twitter+'&size=mini',:align => 'left', :class => 'img-circle' %>
-          <% end %>
-        </div>
-        <div class="span2">
-          <b><%= link_to source.author, '/profile/'+source.slug %></b>
-        </div>
-      </div>
-      <hr />
-    <% end %>
-  </div>
 </div>
 <div class="row">
   <div class="span12">

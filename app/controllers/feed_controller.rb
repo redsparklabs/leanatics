@@ -1,8 +1,7 @@
 class FeedController < ApplicationController
 
   def feed
-
-    sources = Source.all
+    #sources = Source.all
     #sources.each do |feed|
       #FeedEntry.delay.update_from_feed(feed)
     #end
