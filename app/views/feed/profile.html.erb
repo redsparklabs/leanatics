@@ -26,7 +26,7 @@
 <% @entries.each do |entry| %>
   <div class="row" style="border-bottom: solid 1px #F7F7F7;">
     <div class="span12">
-      <b><%=h link_to entry.name, entry.url, :target => '_blank' %></b> <small><%= time_ago_in_words entry.published_at %> ago</small><br /><br />
+      <b><% if entry.name.length > 85 %><%=h link_to entry.name[0..85]+'...', entry.url, :target => '_blank' %><% else %><%=h link_to entry.name, entry.url, :target => '_blank' %><% end %></b>  <small><%= time_ago_in_words entry.published_at %> ago</small><br /><br />
     </div>
 </div>
 <% end %>

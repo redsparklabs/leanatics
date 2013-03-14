@@ -15,7 +15,7 @@
           <% end %>
         </div>
         <div class="span8">
-          <b><%=h link_to entry.name, entry.url, :target => '_blank' %></b> <small><%= time_ago_in_words entry.published_at %> ago</small><br />
+          <b><% if entry.name.length > 85 %><%=h link_to entry.name[0..85]+'...', entry.url, :target => '_blank' %><% else %><%=h link_to entry.name, entry.url, :target => '_blank' %><% end %></b> <small><%= time_ago_in_words entry.published_at %> ago</small><br />
           <small><% if entry.source.slug? %><%= link_to 'About '+entry.source.author, '/profile/'+entry.source.slug %><% else %><%= entry.source.author %><% end %></small>
           <%#= debug entry.source %>
           <%#= entry.summary %>
