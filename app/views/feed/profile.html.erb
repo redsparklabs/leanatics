@@ -15,6 +15,8 @@
        <% if @source.twitter? %><%= link_to 'Follow on Twitter', 'http://twitter.com/#!/'+@source.twitter, :target => '_blank'%><br /><% end %>
        <% if @source.clarity? %><%= link_to 'Schedule a Call with '+@source.author,'https://clarity.fm/?b=h#/'+@source.clarity, :target => '_blank' %><br /><% end %>
        <br />
+       <% if @source.categories? %>Topics:  <% @source.tags.each do |tag| %> <%= link_to tag,'/tag/'+tag %> <% end %><br /><%end %>
+
        <%= link_to 'Back to Main Page', feed_path %>
 <hr />
 </div>

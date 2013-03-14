@@ -8,7 +8,9 @@ class FeedEntry < ActiveRecord::Base
 
   def self.update_from_feed(source)
     feed = Feedzirra::Feed.fetch_and_parse(source.url)
-    add_entries(feed.entries, source.author, source.id)
+    if feed.entries.count > 0
+      add_entries(feed.entries, source.author, source.id)
+    end
   end
 
   def self.update_from_feed_continuously(source, delay_interval = 15.minutes)

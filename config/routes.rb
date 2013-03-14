@@ -1,5 +1,5 @@
 Leanatic::Application.routes.draw do
-  #resources :sources
+  resources :sources
 
 
   get "feed/feed"
