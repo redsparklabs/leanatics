@@ -12,6 +12,7 @@
   <%=simple_format @source.bio %>
 </p>
 <hr />
+      <%= link_to 'Visit Blog',@source.blog %><br />
        <% if @source.twitter? %><%= link_to 'Follow on Twitter', 'http://twitter.com/#!/'+@source.twitter, :target => '_blank'%><br /><% end %>
        <% if @source.clarity? %><%= link_to 'Schedule a Call with '+@source.author,'https://clarity.fm/?b=h#/'+@source.clarity, :target => '_blank' %><br /><% end %>
        <br />
