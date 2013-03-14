@@ -8,7 +8,7 @@ class FeedEntry < ActiveRecord::Base
 
   def self.update_from_feed(source)
     feed = Feedzirra::Feed.fetch_and_parse(source.url)
-    if feed.entries.count > 0
+    if feed.entries
       add_entries(feed.entries, source.author, source.id)
     end
   end

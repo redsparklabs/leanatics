@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
+       <%= link_to 'Update Feed',update_single_feed_path(@source) %><br /><br />
+
 <% if @source.twitter %>
   <%= image_tag 'https://api.twitter.com/1/users/profile_image?screen_name='+@source.twitter+'&size=normal' %>
 <% end %>

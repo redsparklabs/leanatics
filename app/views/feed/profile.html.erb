@@ -17,7 +17,8 @@
        <br />
        <% if @source.categories? %>Topics:  <% @source.tags.each do |tag| %> <%= link_to tag,'/tag/'+tag %> <% end %><br /><%end %>
 
-       <%= link_to 'Back to Main Page', feed_path %>
+       <%= link_to 'Back to Main Page', feed_path %><br />
+
 <hr />
 </div>
 </div>

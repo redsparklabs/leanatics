@@ -81,4 +81,23 @@ class SourcesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def updatefeeds
+    :feedupdate
+    redirect_to sources_url
+  end
+
+  def updatefeed
+    @source = Source.find(params[:id])
+    FeedEntry.update_from_feed(@source)
+    redirect_to @source
+  end
+
+  def feedupdate
+    @active_sources = Source.where(:active => true).all(:order => 'author')
+    @active_sources.each do |source|
+      FeedEntry.update_from_feed(source)
+    end
+  end
+  handle_asynchronously :feedupdate, :updatefeed
 end
