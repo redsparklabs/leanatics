@@ -19,7 +19,7 @@ class FeedController < ApplicationController
   end
 
   def tag
-    @active_sources = Source.where(:active => true).where("categories like '%"+params[:tag]+"%'")
+    @active_sources = Source.where(:active => true).where("categories like '%"+params[:tag]+"%'").all(:order => 'author')
     @entries = FeedEntry.where(:feed_id => @active_sources).all(:limit => 50, :order => "published_at desc")
   end
 
