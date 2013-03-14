@@ -13,6 +13,7 @@ end
 gem 'feedzirra'
 gem 'twitter-bootstrap-rails'
 gem 'delayed_job_active_record'
+gem 'httparty'
 group :production do
   gem 'pg'
 end

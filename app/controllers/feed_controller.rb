@@ -5,7 +5,7 @@ class FeedController < ApplicationController
     #sources.each do |feed|
       #FeedEntry.delay.update_from_feed(feed)
     #end
-    @active_sources = Source.where(:active => true).all(:order => 'author')
+    @active_sources = Source.where(:active => true).where("categories like '%lean%'").all(:order => 'author')
     #@active_sources.each do |source|
       #FeedEntry.delay.update_from_feed(source)
     #end
@@ -15,6 +15,7 @@ class FeedController < ApplicationController
   def profile
     @source = Source.where(:slug => params[:slug]).first
     @entries = FeedEntry.where(:feed_id => @source).all(:limit => 50, :order => "published_at desc")
+    #@clarity = HTTParty.get('http://api.clarity.fm/1/members?id='+@source.clarity)
   end
 
   def tag
