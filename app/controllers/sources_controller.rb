@@ -1,8 +1,9 @@
 class SourcesController < ApplicationController
+  before_filter :authenticate
   # GET /sources
   # GET /sources.json
   def index
-    @sources = Source.all
+    @sources = Source.all(:order => 'author')
 
     respond_to do |format|
       format.html # index.html.erb
