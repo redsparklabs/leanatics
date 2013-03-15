@@ -1,6 +1,6 @@
 Leanatic::Application.routes.draw do
-  get 'sources/updatefeed' => 'sources#updatefeeds', :as => :update_feed
-  get 'sources/updatesinglefeed/:id' => 'sources#updatefeed', :as => :update_single_feed
+  get 'sources/update_all_feeds' => 'sources#updateallfeeds', :as => :update_all_feed
+  get 'sources/update_single_feed/:id' => 'sources#updatesinglefeed', :as => :update_single_feed
   resources :sources
 
   get "feed/feed"

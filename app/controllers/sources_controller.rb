@@ -82,22 +82,23 @@ class SourcesController < ApplicationController
     end
   end
 
-  def updatefeeds
-    :feedupdate
+  def updateallfeeds
+    @active_sources = Source.where(:active => true).all(:order => 'author')
+    @active_sources.each do |source|
+      feedupdate(source)
+    end
     redirect_to sources_url
   end
 
-  def updatefeed
+  def updatesinglefeed
     @source = Source.find(params[:id])
-    FeedEntry.update_from_feed(@source)
+      feedupdate(@source)
     redirect_to @source
   end
 
-  def feedupdate
-    @active_sources = Source.where(:active => true).all(:order => 'author')
-    @active_sources.each do |source|
+  private
+  def feedupdate(source)
       FeedEntry.update_from_feed(source)
-    end
   end
-  handle_asynchronously :feedupdate, :updatefeed
+  #handle_asynchronously :feedupdate
 end

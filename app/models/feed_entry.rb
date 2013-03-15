@@ -12,6 +12,7 @@ class FeedEntry < ActiveRecord::Base
       add_entries(feed.entries, source.author, source.id)
     end
   end
+  #handle_asynchronously :update_from_feed
 
   def self.update_from_feed_continuously(source, delay_interval = 15.minutes)
     feed = Feedzirra::Feed.fetch_and_parse(source.url)
@@ -40,4 +41,5 @@ class FeedEntry < ActiveRecord::Base
       end
     end
   end
+
 end
