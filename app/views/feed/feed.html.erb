@@ -36,8 +36,8 @@
         <div class="span8">
           <b><% if entry.name.length > 85 %><%= link_to entry.name[0..85]+'...', entry.url, :target => '_blank' %><% else %><%= link_to entry.name, entry.url, :target => '_blank' %><% end %></b>  <small><%= time_ago_in_words entry.published_at %> ago</small><br />
           <small><% if entry.source.slug? %><%= link_to entry.source.author, '/profile/'+entry.source.slug %><% else %><%= entry.source.author %><% end %></small><br />
-          <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= entry.url %>" data-text=".@<%= entry.source.twitter %> <%= entry.name %>" data-via="spinuplabs - http://leanatics.com">Tweet</a>
-          <a href="http://bufferapp.com/add" class="buffer-add-button" data-text=".@<%= entry.source.twitter %> <%= entry.name %>" data-url="<%= entry.url %>" data-count="horizontal" data-via="@spinuplabs - http://leanatics.com" >Buffer</a>
+          <!--<a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= entry.url %>" data-text=".@<%= entry.source.twitter %> <%= entry.name %>" data-via="spinuplabs - <%= request.url %>">Tweet</a>
+          <a href="http://bufferapp.com/add" class="buffer-add-button" data-text=".@<%= entry.source.twitter %> <%= entry.name %>" data-url="<%= entry.url %>" data-count="horizontal" data-via="@spinuplabs - <%= request.url %>" >Buffer</a>-->
           <%#= debug entry.source %>
           <%#= entry.summary %>
           <%#= link_to 'Read',entry.url %>
