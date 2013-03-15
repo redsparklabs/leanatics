@@ -26,51 +26,10 @@
 </div>
 <div class="row">
   <div class="span9">
-    <% @entries.each do |entry| %>
-      <div class="row" style="border-bottom: solid 1px #F7F7F7;">
-        <div class="span1">
-          <% if entry.source.twitter? %>
-            <%= image_tag 'https://api.twitter.com/1/users/profile_image?screen_name='+entry.source.twitter+'&size=normal',:align => 'left', :class => 'img-circle' %>
-          <% end %>
-        </div>
-        <div class="span8">
-          <b><% if entry.name.length > 85 %><%= link_to entry.name[0..85]+'...', entry.url, :target => '_blank' %><% else %><%= link_to entry.name, entry.url, :target => '_blank' %><% end %></b>  <small><%= time_ago_in_words entry.published_at %> ago</small><br />
-          <small><% if entry.source.slug? %><%= link_to entry.source.author, '/profile/'+entry.source.slug %><% else %><%= entry.source.author %><% end %></small><br />
-          <!--<a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= entry.url %>" data-text=".@<%= entry.source.twitter %> <%= entry.name %>" data-via="spinuplabs - <%= request.url %>">Tweet</a>
-          <a href="http://bufferapp.com/add" class="buffer-add-button" data-text=".@<%= entry.source.twitter %> <%= entry.name %>" data-url="<%= entry.url %>" data-count="horizontal" data-via="@spinuplabs - <%= request.url %>" >Buffer</a>-->
-          <%#= debug entry.source %>
-          <%#= entry.summary %>
-          <%#= link_to 'Read',entry.url %>
-        </div>
-      </div>
-    <% end %>
+    <%= render 'feedlist' %>
   </div>
   <div class="span3">
-    <h4>Author List</h4>
-    <% @active_sources.each do |source| %>
-      <div class="row">
-        <div class="span1">
-          <% if source.twitter? %>
-            <%= image_tag 'https://api.twitter.com/1/users/profile_image?screen_name='+source.twitter+'&size=mini',:align => 'left', :class => 'img-circle' %>
-          <% end %>
-        </div>
-        <div class="span2">
-          <b><%= link_to source.author, '/profile/'+source.slug %></b><br />
-          <a href="https://twitter.com/<%= source.twitter %>" class="twitter-follow-button" data-show-count="false">Follow @<%= source.twitter %></a>
-        </div>
-      </div>
-      <hr />
-    <% end %>
+    <%= render 'authorlist' %>
   </div>
 </div>
-<div class="row">
-  <div class="span12">
-    <hr />
-    <p>
-      <small><em>legal mumbo jumbo:<br /><%= link_to 'Lean Startup','http://theleanstartup.com/', :target => '_blank'  %> is a registered trademark of <%= link_to 'Eric Ries','http://www.startuplessonslearned.com/', :target => '_blank'  %>.<br />
-        We maintain no affiliation with <%= link_to 'Clarity.fm','http://clarity.fm', :target => '_blank'  %> or <%= link_to 'Twitter','http://twitter.com', :target => '_blank'  %>, but encourage the use of good tools when we see them.</em></small>
-      </p>
-    </div>
-  </div>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<script type="text/javascript" src="http://static.bufferapp.com/js/button.js"></script>
+<%= render 'footer' %>
