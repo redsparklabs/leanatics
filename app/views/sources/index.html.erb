@@ -20,7 +20,7 @@
     <td><%= source.author %></td>
     <td><%= source.active? ? 'Active' : 'Inactive' %></td>
     <td><%# if source.last_updated? %><%#= time_ago_in_words source.last_updated %><%# end %></td>
-    <td><%= link_to 'Update', update_single_feed_path(source) %></td>
+    <td><%#= link_to 'Update', update_single_feed_path(source) %></td>
     <td><%= link_to 'Show', source %></td>
     <td><%= link_to 'Edit', edit_source_path(source) %></td>
     <td><%= link_to 'Destroy', source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
