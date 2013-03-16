@@ -7,6 +7,12 @@
       <p><%= link_to image_tag('http://leanentrepreneur.co/wp-content/uploads/2012/10/tleordercoverftr.png'), 'http://leanentrepreneur.co' %></p>
     <% end %>
     <p><%= link_to 'Back to Main Feed', feed_path %></p>
+    <hr />
+      <%#= debug @tags %>
+      Categories:
+      <% @tags.each do |tag| %>
+        <%= link_to tag,'/tag/'+tag %>
+      <% end %>
 <hr />
 </div>
 </div>

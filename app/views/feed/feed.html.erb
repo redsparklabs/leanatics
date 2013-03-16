@@ -22,6 +22,12 @@
     </p>
     <p>Leanatics is a side project of <%= link_to 'SpinUp Labs','http://www.spinuplabs.com' %></p>
     <hr />
+      <%#= debug @tags %>
+      Categories:
+      <% @tags.each do |tag| %>
+        <%= link_to tag,'/tag/'+tag %>
+      <% end %>
+    <hr />
   </div>
 </div>
 <div class="row">

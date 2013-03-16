@@ -6,6 +6,12 @@ class FeedController < ApplicationController
       #FeedEntry.delay.update_from_feed(feed)
     #end
     @active_sources = Source.where(:active => true).where("categories like '%lean%'").all(:order => 'author')
+    tags = Array.new
+    tag_sources = Source.where(:active => true)
+    tag_sources.each do |source|
+      tags += source.tags
+    end
+    @tags = tags.uniq
     #@active_sources.each do |source|
       #FeedEntry.delay.update_from_feed(source)
     #end
@@ -20,6 +26,12 @@ class FeedController < ApplicationController
 
   def tag
     @active_sources = Source.where(:active => true).where("categories like '%"+params[:tag]+"%'").all(:order => 'author')
+    tags = Array.new
+    tag_sources = Source.where(:active => true)
+    tag_sources.each do |source|
+      tags += source.tags
+    end
+    @tags = tags.uniq
     @entries = FeedEntry.where(:feed_id => @active_sources).all(:limit => 50, :order => "published_at desc")
   end
 

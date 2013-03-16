@@ -9,7 +9,7 @@ class Source < ActiveRecord::Base
     tags.each do |tag|
       @cleantags << tag.strip
     end
-    @cleantags
+    @cleantags.uniq
   end
 
   def set_lastupdated
