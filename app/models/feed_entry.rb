@@ -10,6 +10,7 @@ class FeedEntry < ActiveRecord::Base
     feed = Feedzirra::Feed.fetch_and_parse(source.url)
     if feed.entries
       add_entries(feed.entries, source.author, source.id)
+      source.set_lastupdated
     end
   end
   #handle_asynchronously :update_from_feed
