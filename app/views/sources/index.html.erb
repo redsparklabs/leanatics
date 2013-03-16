@@ -17,7 +17,7 @@
     <td><%= source.author %></td>
     <td><%= source.url %></td>
     <td><%= source.active? ? 'Active' : 'Inactive' %></td>
-    <td><%= source.last_updated?  ? time_ago_in_words(source.last_updated) : "Not Updating" %></td>
+    <td><%= source.active?  ? time_ago_in_words(source.last_updated) : "Not Updating" %></td>
     <td><%= link_to 'Update', update_single_feed_path(source) %></td>
     <td><%= link_to 'Show', source %></td>
     <td><%= link_to 'Edit', edit_source_path(source) %></td>
