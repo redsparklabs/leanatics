@@ -12,6 +12,7 @@ class FeedController < ApplicationController
       tags += source.tags
     end
     @tags = tags.uniq
+    @tags = @tags.sort
     #@active_sources.each do |source|
       #FeedEntry.delay.update_from_feed(source)
     #end
@@ -32,6 +33,7 @@ class FeedController < ApplicationController
       tags += source.tags
     end
     @tags = tags.uniq
+    @tags = @tags.sort
     @entries = FeedEntry.where(:feed_id => @active_sources).all(:limit => 50, :order => "published_at desc")
   end
 
