@@ -1,10 +1,9 @@
 <h1>Listing sources</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
-    <th>Name</th>
-    <th>Url</th>
     <th>Author</th>
+    <th>Url</th>
     <th>Active</th>
     <th>Last Updated</th>
     <th></th>
@@ -15,11 +14,10 @@
 
 <% @sources.each do |source| %>
   <tr>
-    <td><%= source.name %></td>
-    <td><%= source.url %></td>
     <td><%= source.author %></td>
+    <td><%= source.url %></td>
     <td><%= source.active? ? 'Active' : 'Inactive' %></td>
-    <td><%# if source.last_updated != nil %><%#= time_ago_in_words source.last_updated %><%# end %></td>
+    <td><%= source.last_updated?  ? time_ago_in_words(source.last_updated) : "Not Updating" %></td>
     <td><%= link_to 'Update', update_single_feed_path(source) %></td>
     <td><%= link_to 'Show', source %></td>
     <td><%= link_to 'Edit', edit_source_path(source) %></td>
