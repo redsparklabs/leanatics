@@ -92,7 +92,7 @@ class SourcesController < ApplicationController
 
   def updatesinglefeed
     @source = Source.find(params[:id])
-      feedupdate(@source)
+    feedupdate(@source)
     redirect_to sources_url
   end
 
