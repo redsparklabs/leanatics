@@ -5,7 +5,6 @@
     <th>Author</th>
     <th>Url</th>
     <th>Active</th>
-    <th>Update Feed</th>
     <th>Last Updated</th>
     <th></th>
     <th></th>
@@ -18,8 +17,7 @@
     <td><%= source.author %></td>
     <td><%= source.url %></td>
     <td><%= source.active? ? 'Active' : 'Inactive' %></td>
-    <td><%= source.update_feed? ? 'Updating' : 'Not Updating' %></td>
-    <td><%= source.last_updated?  ? time_ago_in_words(source.last_updated) : "Not Updating" %></td>
+    <td><% if source.update_feed?  %><%= source.last_updated?  ? time_ago_in_words(source.last_updated) : "Not Updated" %><% end %></td>
     <td><% if source.update_feed? %><%= link_to 'Update', update_single_feed_path(source) %><% end %></td>
     <td><%= link_to 'Show', source %></td>
     <td><%= link_to 'Edit', edit_source_path(source) %></td>
