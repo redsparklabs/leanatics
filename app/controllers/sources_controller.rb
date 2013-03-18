@@ -83,7 +83,7 @@ class SourcesController < ApplicationController
   end
 
   def updateallfeeds
-    @active_sources = Source.where(:active => true).all(:order => 'author')
+    @active_sources = Source.where(:update_feed => true).all(:order => 'author')
     @active_sources.each do |source|
       feedupdate(source)
     end

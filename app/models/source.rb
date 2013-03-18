@@ -1,5 +1,5 @@
 class Source < ActiveRecord::Base
-  attr_accessible :author, :name, :url, :clarity, :bio, :twitter, :picture, :blog, :slug, :active, :categories, :last_updated
+  attr_accessible :author, :name, :url, :clarity, :bio, :twitter, :picture, :blog, :slug, :active, :categories, :last_updated, :update_feed
   has_many :feed_entries
   serialize :categories
 

@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <b>Active:</b>
+  <%= @source.update_feed? ? 'Updating' : 'Not Updating' %>
+</p>
+
+<p>
   <b>Categories</b>
   <%= @source.categories %>
 </p>

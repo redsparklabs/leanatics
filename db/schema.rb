@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130316005425) do
+ActiveRecord::Schema.define(:version => 20130318172040) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20130316005425) do
     t.boolean  "active"
     t.text     "categories"
     t.datetime "last_updated"
+    t.boolean  "update_feed"
   end
 
 end
