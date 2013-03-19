@@ -110,19 +110,16 @@ class SourcesController < ApplicationController
 
   def add_posts(entries, title, id)
     entries.each do |entry|
-      if FeedEntry.where(:guid => entry.id)
-        post = FeedEntry.new
+        post = {
+          :feed_id => id,
+          :feed_title => title,
+          :name => entry.title,
+          :summary => entry.summary,
+          :url => entry.url,
+          :published_at => entry.published,
+          :guid => entry.id }
 
-        post.feed_id = id
-        post.feed_title = title
-        post.name = entry.title
-        post.summary = entry.summary
-        post.url = entry.url
-        post.published_at = entry.published
-        post.guid = entry.id
-
-        post.save
-      end
+        FeedEntry.find_or_create_by_guid(post)
     end
   end
   #handle_asynchronously :update_from_feed
