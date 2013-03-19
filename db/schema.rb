@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319001707) do
+ActiveRecord::Schema.define(:version => 20130318172040) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(:version => 20130319001707) do
     t.datetime "updated_at",   :null => false
     t.string   "feed_title"
     t.integer  "feed_id"
-    t.boolean  "highlight"
   end
 
   create_table "sources", :force => true do |t|
