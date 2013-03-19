@@ -7,10 +7,11 @@ Leanatic::Application.routes.draw do
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  get 'feed' => 'feed#feed'
+  get 'feed' => 'feed#feed', :as => :feed
   get 'profile/:slug' => 'feed#profile'
   get 'tag/:tag' => 'feed#tag'
   get 'new_feed' => 'feed#new_feed'
+  get 'feed/highlight/:id' => 'feed#highlight', :as => :highlight_post
   root :to => 'feed#feed'
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

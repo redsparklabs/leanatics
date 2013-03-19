@@ -37,4 +37,10 @@ class FeedController < ApplicationController
     @entries = FeedEntry.where(:feed_id => @active_sources).all(:limit => 50, :order => "published_at desc")
   end
 
+  def highlight
+    @entry = FeedEntry.find(params[:id])
+    @entry.highlight = true
+    @entry.save
+    redirect_to feed_path
+  end
 end
