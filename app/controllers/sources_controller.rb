@@ -82,6 +82,11 @@ class SourcesController < ApplicationController
     end
   end
 
+  def clear_posts_cache
+    FeedEntry.delete_all
+    redirect_to sources_url
+  end
+
   def updateallfeeds
     @active_sources = Source.where(:update_feed => true).all(:order => 'author')
     @active_sources.each do |source|

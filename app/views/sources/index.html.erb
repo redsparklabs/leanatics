@@ -1,4 +1,8 @@
-<h1>Listing sources</h1>
+<h1>Leanatics Admin</h1>
+<%= link_to 'Update All Feeds',update_all_feed_path %><br />
+<%= link_to 'View Feed',feed_path %><br />
+<%= link_to 'New Source', new_source_path %><br />
+<%= link_to 'Clear All Posts', clear_posts_cache_path %>
 
 <table class="table table-striped">
   <tr>
@@ -27,6 +31,7 @@
 </table>
 
 <br />
-<%= link_to 'Update Feed',update_all_feed_path %><br />
+<%= link_to 'Update All Feeds',update_all_feed_path %><br />
 <%= link_to 'View Feed',feed_path %><br />
-<%= link_to 'New Source', new_source_path %>
+<%= link_to 'New Source', new_source_path %><br />
+<%= link_to 'Clear All Posts', clear_posts_cache_path %>
