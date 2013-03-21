@@ -9,6 +9,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'pg'
   gem 'seed_dumper'
+  gem 'better_errors'
 end
 gem 'feedzirra'
 gem 'twitter-bootstrap-rails'

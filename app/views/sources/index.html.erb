@@ -7,6 +7,7 @@
 <table class="table table-striped">
   <tr>
     <th>Author</th>
+    <th>Posts</th>
     <th>Url</th>
     <th>Active</th>
     <th>Last Updated</th>
@@ -19,6 +20,7 @@
 <% @sources.each do |source| %>
   <tr>
     <td><%= source.author %></td>
+    <td><%= source.post_count %></td>
     <td><%= source.url %></td>
     <td><%= source.active? ? 'Active' : 'Inactive' %></td>
     <td><% if source.update_feed?  %><%= source.last_updated?  ? time_ago_in_words(source.last_updated) : "Not Updated" %><% end %></td>

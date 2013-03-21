@@ -42,7 +42,7 @@ class SourcesController < ApplicationController
   # POST /sources.json
   def create
     @source = Source.new(params[:source])
-
+    #@source.refresh_posts
     respond_to do |format|
       if @source.save
         format.html { redirect_to @source, notice: 'Source was successfully created.' }
@@ -90,14 +90,14 @@ class SourcesController < ApplicationController
   def updateallfeeds
     @active_sources = Source.where(:update_feed => true).all(:order => 'author')
     @active_sources.each do |source|
-      source.update_feed
+      source.refresh_posts
     end
     redirect_to sources_url
   end
 
   def updatesinglefeed
     @source = Source.find(params[:id])
-    @source.update_feed
+    @source.refresh_posts
     redirect_to sources_url
   end
 

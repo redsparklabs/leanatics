@@ -3,6 +3,10 @@ class Source < ActiveRecord::Base
   has_many :feed_entries
   serialize :categories
 
+  def post_count
+    FeedEntry.where(:feed_id => self.id).count
+  end
+
   def tags
     tags = self.categories.to_s.split(',')
     @cleantags = Array.new
@@ -17,7 +21,7 @@ class Source < ActiveRecord::Base
     self.save
   end
 
-  def update_feed
+  def refresh_posts
     feed = Feedzirra::Feed.fetch_and_parse(self.url)
     if !feed.entries.nil?
       feed.entries.each do |entry|
