@@ -90,43 +90,15 @@ class SourcesController < ApplicationController
   def updateallfeeds
     @active_sources = Source.where(:update_feed => true).all(:order => 'author')
     @active_sources.each do |source|
-      update_feed(source)
+      source.update_feed
     end
     redirect_to sources_url
   end
 
   def updatesinglefeed
     @source = Source.find(params[:id])
-    update_feed(@source)
+    @source.update_feed
     redirect_to sources_url
   end
-
-
-
-  private
-
-   def update_feed(source)
-    feed = Feedzirra::Feed.fetch_and_parse(source.url)
-    if !feed.entries.nil?
-      add_posts(feed.entries, source.author, source.id)
-      source.set_lastupdated
-    end
-  end
-
-  def add_posts(entries, title, id)
-    entries.each do |entry|
-        post = {
-          :feed_id => id,
-          :feed_title => title,
-          :name => entry.title,
-          :summary => entry.summary,
-          :url => entry.url,
-          :published_at => entry.published,
-          :guid => entry.id }
-
-        FeedEntry.find_or_create_by_guid(post)
-    end
-  end
-  #handle_asynchronously :update_from_feed
 
 end

@@ -6,5 +6,10 @@ class FeedEntry < ActiveRecord::Base
     @source = Source.where(:id => self.feed_id).first
   end
 
+  def summary_clean
+    if !self.summary.nil?
+      self.summary.gsub(/<\/?[^>]*>/, '')
+    end
+  end
 
 end

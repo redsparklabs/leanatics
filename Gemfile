@@ -14,6 +14,7 @@ gem 'feedzirra'
 gem 'twitter-bootstrap-rails'
 gem 'delayed_job_active_record'
 gem 'httparty'
+gem 'whenever'
 group :production do
   gem 'pg'
 end

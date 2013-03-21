@@ -16,4 +16,34 @@ class Source < ActiveRecord::Base
     self.last_updated = DateTime.now
     self.save
   end
+
+  def update_feed
+    feed = Feedzirra::Feed.fetch_and_parse(self.url)
+    if !feed.entries.nil?
+      feed.entries.each do |entry|
+        post = {
+          :feed_id => self.id,
+          :feed_title => self.author,
+          :name => entry.title,
+          :summary => entry.summary,
+          :url => entry.url,
+          :published_at => entry.published,
+          :guid => entry.id }
+
+        FeedEntry.find_or_create_by_guid(post)
+      end
+      self.set_lastupdated
+    end
+  end
+
+  def autoupdate_feed
+    @sources = FeedEntry.where(:update_feed => true).all
+    @sources.each do |source|
+      source.update_feed
+    end
+  end
+
+  #handle_asynchronously :update_feed
+  #handle_asynchronously :update_feed, :run_at => Proc.new { 10.seconds.from_now }
+
 end

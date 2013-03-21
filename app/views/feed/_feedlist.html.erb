@@ -1,5 +1,5 @@
     <% @entries.each do |entry| %>
-      <div class="row" style="border-bottom: solid 1px #F7F7F7;">
+      <div class="row entry" style="border-bottom: solid 1px #CCC;">
         <div class="span1">
           <% if entry.source.twitter? %>
             <%= image_tag 'https://api.twitter.com/1/users/profile_image?screen_name='+entry.source.twitter+'&size=normal',:align => 'left', :class => 'img-circle' %>
@@ -10,13 +10,13 @@
           <small>
             <% if entry.source.slug? %><%= link_to entry.source.author, '/profile/'+entry.source.slug %><% else %><%= entry.source.author %><% end %>
         </small>
+        <p>
+          <i class="summary"><%=sanitize entry.summary_clean %> <br /><%= link_to 'Continue Reading...',entry.url, :target => '_blank' %></i>
+        </p>
           <% if logged_in? %>
             <%#= link_to 'highlight', highlight_post_path(entry) %>
           <% end %>
-          <br />
-          <%#= debug entry.source %>
-          <%#= entry.summary %>
-          <%#= link_to 'Read',entry.url %>
+
         </div>
       </div>
     <% end %>
