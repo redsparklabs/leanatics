@@ -11,7 +11,7 @@
             <% if entry.source.slug? %><%= link_to entry.source.author, '/profile/'+entry.source.slug %><% else %><%= entry.source.author %><% end %>
         </small>
         <p>
-          <i class="summary"><%=sanitize entry.summary_clean %> <br /><%= link_to 'Continue Reading...',entry.url, :target => '_blank' %></i>
+          <i class="summary"><%=sanitize entry.summary_clean %> <br /><%= link_to 'Continue Reading',entry.url, :target => '_blank' %></i>
         </p>
           <% if logged_in? %>
             <%#= link_to 'highlight', highlight_post_path(entry) %>

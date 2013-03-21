@@ -8,7 +8,7 @@ class FeedEntry < ActiveRecord::Base
 
   def summary_clean
     if !self.summary.nil?
-      self.summary.gsub(/<\/?[^>]*>/, '')
+      self.summary.gsub(/<\/?[^>]*>/, '')[0,320] + '...'
     end
   end
 
