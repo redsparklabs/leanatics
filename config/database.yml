@@ -20,10 +20,10 @@ test:
 
 production:
   adapter: postrgesql
-  database:
-  username:
-  password:
-  host:
+  database: leanatics
+  username: altruus
+  password: DamnImGood00
+  host: localhost
   port: 5432
   encoding: unicode
   pool: 5

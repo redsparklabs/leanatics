@@ -18,6 +18,7 @@ gem 'httparty'
 #gem 'whenever'
 group :production do
   gem 'pg'
+  gem 'capistrano'
 end
 
 # Gems used only for assets and not required
