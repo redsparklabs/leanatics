@@ -5,11 +5,14 @@ gem 'rails', '3.2.12'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+
 group :development, :test do
   gem 'sqlite3'
-  gem 'pg'
+  #gem 'pg'
   gem 'seed_dumper'
   gem 'better_errors'
+  gem 'capistrano'
+  gem 'rvm-capistrano'
 end
 gem 'feedzirra'
 gem 'twitter-bootstrap-rails'
@@ -17,8 +20,8 @@ gem 'twitter-bootstrap-rails'
 gem 'httparty'
 #gem 'whenever'
 group :production do
-  gem 'pg'
-  gem 'capistrano'
+  #gem 'pg'
+  gem 'sqlite3'
 end
 
 # Gems used only for assets and not required
