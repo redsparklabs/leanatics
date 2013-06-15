@@ -21,22 +21,29 @@ class Source < ActiveRecord::Base
     self.save
   end
 
-  def refresh_posts
-    feed = Feedzirra::Feed.fetch_and_parse(self.url)
-    if !feed.entries.nil?
-      feed.entries.each do |entry|
-        post = {
-          :feed_id => self.id,
-          :feed_title => self.author,
-          :name => entry.title,
-          :summary => entry.summary,
-          :url => entry.url,
-          :published_at => entry.published,
-          :guid => entry.id }
+  def self.update_all_feeds
+    Source.all.each { |source| source.refresh_posts }
+  end
 
-        FeedEntry.find_or_create_by_guid(post)
+  def refresh_posts
+    if self.update_feed
+      if feed = Feedzirra::Feed.fetch_and_parse(self.url)
+        if !feed.entries.nil?
+          feed.entries.each do |entry|
+            post = {
+              :feed_id => self.id,
+              :feed_title => self.author,
+              :name => entry.title,
+              :summary => entry.summary,
+              :url => entry.url,
+              :published_at => entry.published,
+              :guid => entry.id }
+
+            FeedEntry.find_or_create_by_guid(post)
+          end
+          self.set_lastupdated
+        end
       end
-      self.set_lastupdated
     end
   end
 
